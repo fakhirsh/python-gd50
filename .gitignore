@@ -1,0 +1,12 @@
+
+# Mac OS files
+.DS_Store
+
+# Python files
+*.pyc
+*.pyo
+*.pyd
+
+# python virtual environment
+venv/
+
