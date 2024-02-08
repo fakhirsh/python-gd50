@@ -65,13 +65,13 @@ def handle_input(dt):
     global game_state, player1_y, player2_y
     keys = pygame.key.get_pressed()
     if keys[pygame.K_w]:
-        player1_y -= PADDLE_SPEED * dt
+        player1_y = max(0, player1_y - PADDLE_SPEED * dt)
     if keys[pygame.K_s]:
-        player1_y += PADDLE_SPEED * dt
+        player1_y = min(VIRTUAL_HEIGHT-20, player1_y + PADDLE_SPEED * dt)
     if keys[pygame.K_UP]:
-        player2_y -= PADDLE_SPEED * dt
+        player2_y = max(0, player2_y - PADDLE_SPEED * dt)
     if keys[pygame.K_DOWN]:
-        player2_y += PADDLE_SPEED * dt
+        player2_y = min(VIRTUAL_HEIGHT-20, player2_y + PADDLE_SPEED * dt)
     
         
 def update(dt):
