@@ -26,6 +26,7 @@ class Paddle:
         self.width = width
         self.height = height
         self.dy = 0
+        self.score = 0
 
 #--------------------------------------------------------------------------
     
@@ -77,3 +78,15 @@ class Paddle:
           - (self.x, self.y, self.width, self.height): The position and dimensions of the rectangle
         '''
         pygame.draw.rect(screen, Paddle.COLOR, (self.x, self.y, self.width, self.height))
+
+#--------------------------------------------------------------------------
+        
+    def getScore(self):
+        return self.score
+    
+    def updateScore(self, amount=1):
+        # Increase the score by the given amount
+        self.score += amount
+
+#--------------------------------------------------------------------------
+    

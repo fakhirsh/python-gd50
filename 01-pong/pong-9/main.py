@@ -10,6 +10,7 @@
 
 import pygame
 import sys
+import random
 from Paddle import Paddle
 from Ball import Ball
 
@@ -20,6 +21,7 @@ from config import *
 # Global game state variables
 player1 = None
 player2 = None
+servingPlayer = 1
 ball = None
 game_state = 'start'
 #---------------------------------------------------------
@@ -70,7 +72,7 @@ def init_game():
     This function initializes the game state variables.
     Note that everything was loaded earlier in the load_game() function.
     '''
-    global game_state, player1, player2, ball
+    global game_state, player1, player2, ball, servingPlayer
 
     # Global game state variable
     game_state = 'start'
@@ -78,6 +80,9 @@ def init_game():
     # Initialize player scores
     player1.score = 0
     player2.score = 0
+
+    # Player 1 always serves first
+    servingPlayer = 1
     
     # Reset the ball
     ball.reset()
@@ -101,15 +106,41 @@ def handle_input(dt):
  #---------------------------------------------------------
                
 def update(dt):
-    global game_state, player1, player2, ball
+    global game_state, player1, player2, ball, servingPlayer
     
+    if game_state == 'serve':
+        # before switching to play, initialize ball's velocity based
+        # on player who last scored
+        ball.dy = random.randint(-50, 50)
+        if servingPlayer == 1:
+            ball.dx = random.randint(140, 200)
+        else:
+            ball.dx = -random.randint(140, 200)
+    
+    #Update ball only if game state is 'play'
+    elif game_state == 'play':
+        ball.update(dt)
+    
+    # If we reach the left or right edge of the screen, then reset
+    #   the ball and update the player score
+    if ball.x < 0:
+        player2.updateScore(1)
+        # Set the serving player to the opponent of the player who scored
+        servingPlayer = 1
+        ball.reset()
+        game_state = 'serve'
+    elif ball.x > VIRTUAL_WIDTH:
+        player1.updateScore(1)
+        # Set the serving player to the opponent of the player who scored
+        servingPlayer = 2
+        ball.reset()
+        game_state = 'serve'
+
     # Update game objects
     player1.update(dt)
     player2.update(dt)
 
-    # Update ball only if game state is 'play'
-    if game_state == 'play':
-        ball.update(dt)
+#---------------------------------------------------------
         
 def render(dt):
     global player1, player2, game_state, ball
@@ -118,8 +149,16 @@ def render(dt):
     virtual_screen.fill((40, 45, 52))
     
     # Draw Text
-    draw_text('Hello '+ game_state +' State!', small_font, VIRTUAL_WIDTH / 2, 20)
     draw_scores(player1.score, player2.score)
+
+    if game_state == 'start':
+        draw_text('Welcome to Pong!', small_font, VIRTUAL_WIDTH // 2, 10)
+        draw_text('Press Spacebar to begin!', small_font, VIRTUAL_WIDTH // 2, 20)
+    elif game_state == 'serve':
+        draw_text('Player ' + str(servingPlayer) + "'s serve!", small_font, VIRTUAL_WIDTH // 2, 10)
+        draw_text('Press Spacebar to serve!', small_font, VIRTUAL_WIDTH // 2, 20)
+    elif game_state == 'play':
+        pass  # no UI messages to display in play
 
     # Draw game objects
     player1.render(virtual_screen)    
@@ -225,10 +264,9 @@ def main():
                 # Toggle game state between 'start' and 'play' on space bar press
                 if event.key == pygame.K_SPACE:
                     if game_state == 'start':
+                        game_state = 'serve'
+                    elif game_state == 'serve':
                         game_state = 'play'
-                    else:
-                        game_state = 'start'
-                        ball.reset()
 
         # Continuous key event checking, polling every frame
         handle_input(dt)

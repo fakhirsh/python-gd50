@@ -1,3 +1,13 @@
+'''
+    Python port of the Harward's GD50 course
+    https://cs50.harvard.edu/games/2018/
+
+    Ported by:  Fakhir Shaheen
+    Website:    https://fakhirshaheen.com/
+    github:     https://github.com/fakhirsh
+    linkedin:   https://www.linkedin.com/in/fakhirshaheen/
+'''
+
 import pygame
 import sys
 
@@ -16,7 +26,8 @@ def main():
     # Main game loop
     running = True
     while running:
-        # Event handling
+         # This is the event loop. It listens for events and executes the appropriate code
+        #  depending on the event type.
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -25,11 +36,27 @@ def main():
         screen.fill((40, 45, 52))
 
         # Set up the font and render the text
-        font = pygame.font.Font(None, 18)  # None uses the default font, 36 is the font size
-        text = font.render('Hello Pong!', True, (255, 255, 255))  # White color
+        # - First parameter means the font type. 
+        #   None means default system font
+        # - Second parameter is the font size
+        font = pygame.font.Font(None, 18)  # Adjust font size as needed
+        
+        # In PyGame, text is drawn in two steps:
+        #   1. Render the text on a temporary surface
+        #   2. Draw the text surface on the screen buffer
+        
+        # Here, first render the text on a temporary surface
+        #   using white color
+        text = font.render('Hello Pong!', True, (255, 255, 255))
+
+        # Get the rectangle of the text surface. Also, 
+        #   Center the text at (x, y).
+        #   If we don't center the text, then the default position 
+        #     is at the top left corner of the text surface
         text_rect = text.get_rect(center=(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2))
         
-        # Blit the text onto the screen
+        # Finally draw the text surface on the screen buffer
+        #  'blit' means to 'draw'
         screen.blit(text, text_rect)
 
         # Update the display

@@ -1,3 +1,13 @@
+'''
+    Python port of the Harward's GD50 course
+    https://cs50.harvard.edu/games/2018/
+
+    Ported by:  Fakhir Shaheen
+    Website:    https://fakhirshaheen.com/
+    github:     https://github.com/fakhirsh
+    linkedin:   https://www.linkedin.com/in/fakhirshaheen/
+'''
+
 import pygame
 import sys
 import random
