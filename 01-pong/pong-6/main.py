@@ -35,8 +35,6 @@ def init_game():
 
     # Global game state variables
     game_state = 'start'
-    player1.score = 0
-    player2.score = 0
     ball.reset()
 
 # Keep this function for continuous keys. Move one time key presses to main event loop
