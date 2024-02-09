@@ -15,6 +15,8 @@ WARNING:
     PLEASE NOTE that the way python namespaces work:
     Changing the value of a variable in one module will not change the value of the same variable in another module.
 
+IMPORTANT:
+    ALWAYS USE MUTABLE OBJECTS LIKE LISTS, DICTIONARIES, SETS ETC. TO SHARE DATA BETWEEN MODULES
 '''
 
 # Actual window dimensions
@@ -33,6 +35,7 @@ WINNING_SCORE = 10
 # Sound references
 # FORCED to use dictionary instead of variables as changes to variables in one module
 #  will not change the value of the same variable in another module
+# ALWAYS USE MUTABLE OBJECTS LIKE LISTS, DICTIONARIES, SETS ETC. TO SHARE DATA BETWEEN MODULES
 sounds = {
     'paddle_hit': None,
     'wall_hit': None,
