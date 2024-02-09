@@ -22,15 +22,24 @@ from config import *
 player1 = None
 player2 = None
 servingPlayer = 1
+winningPlayer = 0
 ball = None
 game_state = 'start'
+
+small_font = None
+score_font = None
+large_font = None
+virtual_screen = None
+clock = None
+
+WINNING_SCORE = 10
 #---------------------------------------------------------
 
 def load_game():
     '''
     This function loads game resources: the game window, fonts, and game objects etc.
     '''
-    global small_font, score_font, virtual_screen, window, clock, player1, player2, ball
+    global small_font, score_font, large_font, virtual_screen, window, clock, player1, player2, ball
     
     # Initialize pygame
     pygame.init()
@@ -50,6 +59,7 @@ def load_game():
     
     # Load fonts
     small_font = pygame.font.Font('font.ttf', 8)
+    large_font = pygame.font.Font('font.ttf', 16)
     score_font = pygame.font.Font('font.ttf', 32)
 
     # The Clock object is responsible for keeping track of time and 
@@ -72,7 +82,7 @@ def init_game():
     This function initializes the game state variables.
     Note that everything was loaded earlier in the load_game() function.
     '''
-    global game_state, player1, player2, ball, servingPlayer
+    global game_state, player1, player2, ball, servingPlayer, winningPlayer
 
     # Global game state variable
     game_state = 'start'
@@ -84,6 +94,9 @@ def init_game():
     # Player 1 always serves first
     servingPlayer = 1
     
+    # No winning player yet
+    winningPlayer = 0
+
     # Reset the ball
     ball.reset()
 
@@ -106,7 +119,7 @@ def handle_input(dt):
  #---------------------------------------------------------
                
 def update(dt):
-    global game_state, player1, player2, ball, servingPlayer
+    global game_state, player1, player2, ball, servingPlayer, winningPlayer
     
     if game_state == 'serve':
         # before switching to play, initialize ball's velocity based
@@ -136,13 +149,23 @@ def update(dt):
         ball.reset()
         game_state = 'serve'
 
+    # Check if any player has reached the winning score
+    if player1.getScore() == WINNING_SCORE:
+        # if any player wins, then set the game state to 'done'
+        game_state = 'done'
+        winningPlayer = 1
+    elif player2.getScore() == WINNING_SCORE:
+        game_state = 'done'
+        winningPlayer = 2
+
     # Update game objects
     player1.update(dt)
     player2.update(dt)
 
-            
+#---------------------------------------------------------
+        
 def render(dt):
-    global player1, player2, game_state, ball
+    global player1, player2, game_state, ball, small_font, large_font, score_font
     
     # Clear the screen with a background color
     virtual_screen.fill((40, 45, 52))
@@ -158,6 +181,9 @@ def render(dt):
         draw_text('Press Spacebar to serve!', small_font, VIRTUAL_WIDTH // 2, 20)
     elif game_state == 'play':
         pass  # no UI messages to display in play
+    elif game_state == 'done':
+        draw_text('Player ' + str(winningPlayer) + ' wins!', large_font, VIRTUAL_WIDTH // 2, 10)
+        draw_text('Press Spacebar to restart!', small_font, VIRTUAL_WIDTH // 2, 30)
 
     # Draw game objects
     player1.render(virtual_screen)    
@@ -266,6 +292,9 @@ def main():
                         game_state = 'serve'
                     elif game_state == 'serve':
                         game_state = 'play'
+                    elif game_state == 'done':
+                        init_game()
+
 
         # Continuous key event checking, polling every frame
         handle_input(dt)
