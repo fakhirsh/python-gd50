@@ -84,11 +84,11 @@ class PlayState(State):
             if event.key == pygame.K_SPACE:
                 self.bird.applyForce()
                 self.jump.play()
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                # Check which mouse button was pressed
-                if event.button == 1:  # Left click
-                    print("Left mouse button pressed at position", event.pos)
-                    self.bird.applyForce()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            # Check which mouse button was pressed
+            if event.button == 1:  # Left click
+                #print("Left mouse button pressed at position", event.pos)
+                self.bird.applyForce()
 
 #--------------------------------------------------------------------------------------------------
     
