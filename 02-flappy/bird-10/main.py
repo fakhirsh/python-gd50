@@ -24,9 +24,6 @@ virtual_screen = None
 window = None
 clock = None
 
-# Game over flag
-gameOver = False
-
 last_time = 0
 
 stateManager = None
@@ -135,8 +132,14 @@ def main():
         #  depending on the event type. Here we are only interested in keyboard events.
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                print("QUIT event")
                 running = False
             else:
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        print("ESCAPE key pressed")
+                        running = False
+                        return
                 # Pass the event to the current active game state
                 stateManager.handle_event(event)
         

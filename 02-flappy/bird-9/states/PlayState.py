@@ -24,23 +24,12 @@ class PlayState(State):
         self.mediumFont = pygame.font.Font('assets/fonts/flappy.ttf', 14)
         self.flappyFont = pygame.font.Font('assets/fonts/flappy.ttf', 28)
         self.hugeFont   = pygame.font.Font('assets/fonts/flappy.ttf', 56)
-
         # background image and starting scroll location (X axis)
         self.backgroundImg = pygame.image.load('assets/images/background.png')
-        self.backgroundScroll = 0
-
         # ground image and starting scroll location (X axis)
         self.groundImg = pygame.image.load('assets/images/ground.png')
-        self.groundScroll = 0
-
-        self.pipeSpawnTimer = 0
-
-        self.lastY = VIRTUAL_HEIGHT / 2
-
         # Create bird object
         self.bird = Bird()
-
-        self.gameOver = False
 
         print("PlayState: load")
 
@@ -57,14 +46,17 @@ class PlayState(State):
     
     def init(self):
         print("PlayState: init")
-
         # List of Pipe objects
         self.pipesPairs = []
         # Timer for spawning pipes
         self.pipeSpawnTimer = 0
-
         # initialize our last recorded Y value for a gap placement to base other gaps off of
         self.lastY = VIRTUAL_HEIGHT / 2
+        self.gameOver = False
+        self.backgroundScroll = 0
+        self.groundScroll = 0
+        self.pipeSpawnTimer = 0
+        self.score = 0
         
 #--------------------------------------------------------------------------------------------------
     
@@ -93,6 +85,8 @@ class PlayState(State):
     def update(self, dt):
 
         if self.gameOver:
+            from .ScoreState import ScoreState
+            self.stateManager.changeState(ScoreState({'score': self.score}))
             return
 
         # Scroll background by preset speed * dt, looping back to 0 after the looping point
@@ -138,10 +132,18 @@ class PlayState(State):
                 # If the bird collides with any pipe, stop the game from scrolling
                 if self.bird.collides(pipe):
                     self.gameOver = True
+                    return
+                elif not pair.scored and pipe.x + pipe.width < self.bird.x:
+                    self.score = self.score + 1
+                    pair.scored = True
 
             # Remove any flagged pipes
             if pair.remove:
                 self.pipesPairs.remove(pair)
+
+        # If the bird collides with the ground, stop the game from scrolling
+        if self.bird.y + self.bird.height >= VIRTUAL_HEIGHT - self.groundImg.get_height():
+            self.gameOver = True
 
 #--------------------------------------------------------------------------------------------------
     
@@ -160,6 +162,8 @@ class PlayState(State):
         # at its negative looping point
         virtual_screen.blit(self.groundImg, (-self.groundScroll, VIRTUAL_HEIGHT - self.groundImg.get_height()))
 
+        draw_text(str(self.score), self.flappyFont, 16, 16, (255, 255, 255), virtual_screen)
+        
         # Draw the bird
         self.bird.render(virtual_screen)
 
