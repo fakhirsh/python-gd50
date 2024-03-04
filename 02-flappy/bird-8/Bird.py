@@ -60,6 +60,9 @@ class Bird:
         '''
         screen.blit(self.image, (self.x, self.y))
 
+        # For debugging: draw a bounding box around the bird
+        pygame.draw.rect(screen, (0,255,0), (self.x, self.y, self.width, self.height), width=1)
+
 #-----------------------------------------------------
 
     def collides(self, pipe):

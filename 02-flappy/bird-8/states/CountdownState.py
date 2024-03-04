@@ -12,16 +12,12 @@ import pygame
 from .State import State
 from utils import draw_text
 from config import *
-from .CountdownState import CountdownState
+from .PlayState import PlayState
 
-class TitleScreenState(State):
+class CountdownState(State):
 
     def load(self):
-        # initialize our nice-looking retro text fonts
-        self.small_font = pygame.font.Font('assets/fonts/font.ttf', 8)
-        self.mediumFont = pygame.font.Font('assets/fonts/flappy.ttf', 14)
-        self.flappyFont = pygame.font.Font('assets/fonts/flappy.ttf', 28)
-        self.hugeFont   = pygame.font.Font('assets/fonts/flappy.ttf', 56)
+        self.hugeFont = pygame.font.Font('assets/fonts/flappy.ttf', 56)
 
         # background image and starting scroll location (X axis)
         self.backgroundImg = pygame.image.load('assets/images/background.png')
@@ -31,21 +27,20 @@ class TitleScreenState(State):
         self.groundImg = pygame.image.load('assets/images/ground.png')
         self.groundScroll = 0
 
-        print("TitleScreenState: load")
+        self.counter = 3.99
+
+        print("CountdownState: load")
 
 #--------------------------------------------------------------------------------------------------
     
     def unload(self):
-        self.small_font = None
-        self.mediumFont = None
-        self.flappyFont = None
         self.hugeFont   = None
-        print("TitleScreenState: unload")
+        print("CountdownState: unload")
 
 #--------------------------------------------------------------------------------------------------
     
     def init(self):
-        print("TitleScreenState: init")
+        print("CountdownState: init")
         
     
 #--------------------------------------------------------------------------------------------------
@@ -66,11 +61,7 @@ class TitleScreenState(State):
 #--------------------------------------------------------------------------------------------------
     
     def handle_event(self, event):
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RETURN:
-                print("Enter pressed")
-                self.stateManager.changeState(CountdownState())
-                # Transition to another state or perform other actions
+        None
 
 #--------------------------------------------------------------------------------------------------
     
@@ -80,6 +71,10 @@ class TitleScreenState(State):
         
         # Scroll ground by preset speed * dt, looping back to 0 after the screen width passes
         self.groundScroll = (self.groundScroll + GROUND_SCROLL_SPEED * dt) % VIRTUAL_WIDTH
+
+        self.counter -= dt
+        if self.counter < 1:
+            self.stateManager.changeState(PlayState())
     
 #--------------------------------------------------------------------------------------------------
     
@@ -94,8 +89,7 @@ class TitleScreenState(State):
         # at its negative looping point
         virtual_screen.blit(self.groundImg, (-self.groundScroll, VIRTUAL_HEIGHT - self.groundImg.get_height()))
         
-        draw_text('FC Bird', self.flappyFont, VIRTUAL_WIDTH / 2, 64, (255, 255, 255), virtual_screen)
-        draw_text('Press Enter', self.mediumFont, VIRTUAL_WIDTH / 2, 100, (255, 255, 255), virtual_screen)
+        draw_text(str(int(self.counter)), self.hugeFont, VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2, (255, 255, 255), virtual_screen)
         #print("TitleScreenState: render")
 
 #--------------------------------------------------------------------------------------------------

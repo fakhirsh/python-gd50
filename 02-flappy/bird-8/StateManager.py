@@ -53,6 +53,7 @@ class StateManager:
             self.states[-1].unload()
             self.states.pop()
         
+        newState.stateManager = self
         self.states.append(newState)
         self.states[-1].load()
         self.states[-1].init()
