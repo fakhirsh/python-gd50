@@ -61,7 +61,16 @@ class TitleScreenState(State):
     
     def resume(self):
         pass
+
+#--------------------------------------------------------------------------------------------------
     
+    def handle_event(self, event):
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RETURN:
+                print("Enter pressed")
+                
+                # Transition to another state or perform other actions
+
 #--------------------------------------------------------------------------------------------------
     
     def update(self, dt):

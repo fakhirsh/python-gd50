@@ -16,7 +16,7 @@ class State:
     these methods according to their specific needs.
     
     Attributes:
-        _isPaused (bool): Indicates whether the state is currently paused.
+        isPaused (bool): Indicates whether the state is currently paused.
     """
 
 #--------------------------------------------------------------------------------------------------
@@ -25,7 +25,8 @@ class State:
         """
         Initializes the State instance, setting the initial paused status to False.
         """
-        self._isPaused = False
+        self.isPaused = False
+        self.stateManager = None
 
 #--------------------------------------------------------------------------------------------------
 
@@ -132,6 +133,21 @@ class State:
 
 #--------------------------------------------------------------------------------------------------
     
+    def handle_event(self, event):
+        """
+        Placeholder for the method to handle events, such as user input or system events.
+        This method should contain the logic for handling events.
+
+        Args:
+            event (pygame.event.Event): The event to handle.
+
+        Raises:
+            NotImplementedError: If the subclass does not implement this method.
+        """
+        raise NotImplementedError
+
+#--------------------------------------------------------------------------------------------------
+    
     def is_paused(self):
         """
         Checks if the state is currently paused.
@@ -139,6 +155,6 @@ class State:
         Returns:
             bool: True if the state is paused, False otherwise.
         """
-        return self._isPaused
+        return self.isPaused
 
 #--------------------------------------------------------------------------------------------------

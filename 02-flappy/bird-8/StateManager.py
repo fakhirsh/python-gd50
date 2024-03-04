@@ -74,3 +74,11 @@ class StateManager:
         if self.states:
             self.states[-1].render(virtual_screen, dt)
 
+    def handle_event(self, event):
+        '''
+        Handles events for the current state
+        @param event: The Pygame event to handle
+        '''
+        if self.states:
+            self.states[-1].handle_event(event)
+

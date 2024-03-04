@@ -155,12 +155,9 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    running = False
-                # Space pressed
-                if event.key == pygame.K_SPACE:
-                    pass
+            else:
+                # Pass the event to the current active game state
+                stateManager.handle_event(event)
         
         # Continuous key event checking, polling every frame
         handle_input(dt)
