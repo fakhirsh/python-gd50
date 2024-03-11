@@ -26,7 +26,6 @@ class StartState(State):
 
         # background image and starting scroll location (X axis)
         self.backgroundImg = pygame.image.load('assets/images/background.png')
-        self.backgroundScroll = 0
 
 #--------------------------------------------------------------------------------------------------
     
