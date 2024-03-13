@@ -28,6 +28,7 @@ class LevelMaker:
 
                 # Create a new Brick instance and add it to the bricks list
                 b = Brick(brick_x, brick_y, atlas, brickQuads)
+                
+                # Add the brick to the list of bricks
                 bricks.append(b)
-
         return bricks

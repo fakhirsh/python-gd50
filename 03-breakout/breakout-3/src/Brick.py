@@ -31,17 +31,20 @@ class Brick:
         self.inPlay = True
 
         self.brickHitSound = pygame.mixer.Sound('assets/sounds/brick-hit-2.wav')
-        print('Brick created at x:', x, 'y:', y)
 
+#------------------------------------------------------------
+        
     def hit(self):
-        # sound on hit
+        # Sound on hit
         self.brickHitSound.play()
+        # Set the brick to be inactive
         self.inPlay = False
 
 #------------------------------------------------------------
         
     def render(self, virtual_screen):
-        # Draw the paddle at the given position
-        virtual_screen.blit(self.atlas, (self.x, self.y), self.rect)
+        # Draw the brick if it's in play
+        if self.inPlay:
+            virtual_screen.blit(self.atlas, (self.x, self.y), self.rect)
 
 #------------------------------------------------------------

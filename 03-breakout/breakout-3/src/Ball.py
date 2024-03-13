@@ -75,7 +75,7 @@ class Ball:
             self.dy = -self.dy
             pygame.mixer.Sound.play(self.wallHitSound)
 
-        if self.checkCollision():
+        if self.checkCollision(self.paddle):
             self.dy = -self.dy
             pygame.mixer.Sound.play(self.paddleHitSound)
  
@@ -87,19 +87,19 @@ class Ball:
 
 #------------------------------------------------------------
         
-    def checkCollision(self):
+    def checkCollision(self, rect):
         '''
         This function checks if the ball is colliding with a rectangle
         '''
         
         # First, check to see if the left edge of either is farther to the right
         # than the right edge of the other
-        if self.x > self.paddle.x + self.paddle.width or self.x + self.width < self.paddle.x:
+        if self.x > rect.x + rect.width or self.x + self.width < rect.x:
             return False
         
         # Then check to see if the bottom edge of either is higher than the top
         # edge of the other
-        if self.y > self.paddle.y + self.paddle.height or self.y + self.height < self.paddle.y:
+        if self.y > rect.y + rect.height or self.y + self.height < rect.y:
             return False
         
         # if the above aren't true, they're overlapping

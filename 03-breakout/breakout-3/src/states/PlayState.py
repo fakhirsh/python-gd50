@@ -42,7 +42,7 @@ class PlayState(State):
         self.bricks = LevelMaker.createMap(self.atlas, self.brickQuads)
         
         # give ball random starting velocity
-        self.ball.dx = random.randint(-300, 300)
+        self.ball.dx = random.randint(-200, 200)
         self.ball.dy = random.randint(-60, -50)
 #--------------------------------------------------------------------------------------------------
     
@@ -91,6 +91,15 @@ class PlayState(State):
 
         self.paddle.update(dt)
         self.ball.update(dt)
+
+        # detect collision across all bricks with the ball
+        for brick in self.bricks:
+
+            # only check collision if we're in play
+            if brick.inPlay and self.ball.checkCollision(brick):
+
+                # trigger the brick's hit function, which removes it from play
+                brick.hit()
     
 #--------------------------------------------------------------------------------------------------
     

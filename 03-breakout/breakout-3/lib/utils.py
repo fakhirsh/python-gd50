@@ -38,7 +38,7 @@ def display_fps(virtual_screen, font, fpsValue):
     fps_text = font.render('FPS: ' + str(fpsValue), True, (0, 255, 0))
     
     # Finally draw the text surface on the virtual screen buffer
-    virtual_screen.blit(fps_text, (10, 10))
+    virtual_screen.blit(fps_text, (5, 5))
 
 #------------------------------------------------------------
 
