@@ -72,27 +72,36 @@ def load():
 
 #---------------------------------------------------------
 
-    for i in range(1):
+    destinations = [
+        ('x', 0, VIRTUAL_WIDTH),
+        ('y', 0, VIRTUAL_HEIGHT-24),
+        ('x', VIRTUAL_WIDTH, 0),
+        ('y', VIRTUAL_HEIGHT-24, 0)
+    ]
+
+    for i in range(1000):
         bird = Bird()
         bird.x = 0
         bird.y = 0
-        bird.duration = 3
+        bird.duration = random.randint(1, TIMER_MAX)
+        bird.angle = random.randint(180, 360)
         birds.append(bird)
 
         TweenManager.create_tween(
             bird, 'x', 0, VIRTUAL_WIDTH - bird.width, bird.duration, 'linear',
-            on_complete=lambda: TweenManager.create_tween(
-                bird, 'y', 0, VIRTUAL_HEIGHT-bird.height, 2.0, 'ease_out_quad',
-                on_complete=lambda: TweenManager.create_tween(
-                    bird, 'x', VIRTUAL_WIDTH, 0, 5.0, 'easeOutElastic',
-                    on_complete=lambda: TweenManager.create_tween(
-                        bird, 'y', VIRTUAL_HEIGHT-bird.height, 0, 3.0, 'linear',
-                        on_complete=lambda: print('All tweens complete')
-                    ) 
+            on_complete=lambda bird=bird: TweenManager.create_tween(
+                bird, 'y', 0, VIRTUAL_HEIGHT - bird.height, 2.0, 'ease_out_quad',
+                on_complete=lambda bird=bird: TweenManager.create_tween(
+                    bird, 'x', VIRTUAL_WIDTH - bird.width, 0, 5.0, 'easeOutElastic',
+                    on_complete=lambda bird=bird: TweenManager.create_tween(
+                        bird, 'y', VIRTUAL_HEIGHT - bird.height, 0, 3.0, 'linear',
+                        on_complete=lambda bird=bird: print('All tweens complete')
+                    )
                 )
             )
         )
-        #TweenManager.create_tween(bird, 'opacity', 0, 255, bird.duration, 'linear')      
+        TweenManager.create_tween(bird, 'opacity', 0, 255, bird.duration, 'linear')
+        TweenManager.create_tween(bird, 'angle', 0, 360, bird.duration*4, 'linear')
 
 #---------------------------------------------------------
 
