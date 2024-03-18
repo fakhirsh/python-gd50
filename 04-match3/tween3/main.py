@@ -40,36 +40,6 @@ birds = []
 
 # longest possible movement duration
 TIMER_MAX = 10
-#---------------------------------------------------------
-
-def linear(start_val, end_val, t, duration):
-    if duration <= 0:
-        raise ValueError("duration must be greater than 0")
-    # Clamp t to be within the range [0, DURATION]
-    t = max(0, min(t, duration))
-    return start_val + (end_val - start_val) * t / duration
-
-def ease_in_quad(start_val, end_val, t, duration):
-    t = max(0, min(t, duration)) / duration  # Normalize t to [0, 1]
-    return start_val + (end_val - start_val) * (t**2)
-
-def ease_out_quad(start_val, end_val, t, duration):
-    t = max(0, min(t, duration)) / duration  # Normalize t to [0, 1]
-    return start_val - (end_val - start_val) * (t * (t - 2))
-
-def easeOutElastic(start_val, end_val, t, duration):
-    if t == 0:
-        return start_val
-    t /= duration
-    if t == 1:
-        return end_val
-    # Adjusting the period to control the frequency of bounces
-    p = duration * 0.3  # This period might result in around 3-4 bounces
-    # Adjusted amplitude to a fixed proportion of the movement range
-    a = (end_val - start_val) * 0.25
-    s = p / 4
-    return a * math.pow(2, -10 * t) * math.sin((t * duration - s) * (2 * math.pi) / p) + end_val
-
 
 #---------------------------------------------------------
 
@@ -102,17 +72,28 @@ def load():
 
 #---------------------------------------------------------
 
-    for i in range(1000):
+    for i in range(1):
         bird = Bird()
         bird.x = 0
-        bird.y = random.randint(0, VIRTUAL_HEIGHT - 24)
-        bird.duration = random.random() + random.randint(0, TIMER_MAX - 1)
+        bird.y = 0
+        bird.duration = 3
         birds.append(bird)
 
-        TweenManager.create_tween(bird, 'x', 0, VIRTUAL_WIDTH - bird.width, bird.duration, linear)
-        end_y = random.randint(0, VIRTUAL_HEIGHT - 24)
-        TweenManager.create_tween(bird, 'y', bird.y, end_y, bird.duration, linear)
-        TweenManager.create_tween(bird, 'opacity', 0, 255, bird.duration, linear)      
+        TweenManager.create_tween(
+            bird, 'x', 0, VIRTUAL_WIDTH - bird.width, bird.duration, 'linear',
+            on_complete=lambda: TweenManager.create_tween(
+                bird, 'y', 0, VIRTUAL_HEIGHT-bird.height, 2.0, 'ease_out_quad',
+                on_complete=lambda: TweenManager.create_tween(
+                    bird, 'x', VIRTUAL_WIDTH, 0, 5.0, 'easeOutElastic',
+                    on_complete=lambda: TweenManager.create_tween(
+                        bird, 'y', VIRTUAL_HEIGHT-bird.height, 0, 3.0, 'linear',
+                        on_complete=lambda: print('All tweens complete')
+                    ) 
+                )
+            )
+        )
+        TweenManager.create_tween(bird, 'y', bird.y, 0, bird.duration, 'linear')
+        TweenManager.create_tween(bird, 'opacity', 0, 255, bird.duration, 'linear')      
 
 #---------------------------------------------------------
 

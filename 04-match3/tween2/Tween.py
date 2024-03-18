@@ -19,5 +19,5 @@ class Tween:
 
         progress = self.timer / self.duration
         current_val = self.easing_func(self.start_val, self.end_val, progress, 1)
-        #setattr(self.obj, self.property_name, current_val)
-        self.obj[self.property_name] = current_val
+        setattr(self.obj, self.property_name, current_val)
+        #self.obj[self.property_name] = current_val
