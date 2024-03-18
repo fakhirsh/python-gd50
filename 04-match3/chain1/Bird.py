@@ -30,6 +30,7 @@ class Bird:
         self.y = 0
         self.duration = 0
         self.opacity = 255
+        self.angle = 0
 
 #-----------------------------------------------------
 
@@ -42,8 +43,12 @@ class Bird:
         '''
         Draw the bird on the screen.
         '''
-        temp_surface = self.image.copy()
+        # Rotate the image around its center
+        rotated_image = pygame.transform.rotate(self.image, self.angle)
+        new_rect = rotated_image.get_rect(center=self.image.get_rect(topleft=(self.x, self.y)).center)
+
+        temp_surface = rotated_image.copy()
         temp_surface.set_alpha(self.opacity)
-        screen.blit(temp_surface, (self.x, self.y))       
+        screen.blit(temp_surface, new_rect.topleft)
 
 #-----------------------------------------------------
