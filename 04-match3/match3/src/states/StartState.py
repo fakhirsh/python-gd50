@@ -76,8 +76,8 @@ class StartState(State):
     
     def handle_event(self, event):
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RETURN:
-                # Handle the return key
+            if event.key == pygame.K_DOWN:
+                
                 pass
 
 #--------------------------------------------------------------------------------------------------
@@ -102,11 +102,12 @@ class StartState(State):
 
         # Draw the title of the game
         #draw_text('Match 3', Global.assets['fonts']['large'], Global.VIRTUAL_WIDTH / 2, Global.VIRTUAL_HEIGHT/3, (255, 255, 255))
-        self.draw_match3_text(-60)
+        self.drawMatch3Text(-60)
+        self.drawOptions(12)
 
 #--------------------------------------------------------------------------------------------------
 
-    def draw_match3_text(self, y):
+    def drawMatch3Text(self, y):
         # Assuming VIRTUAL_WIDTH, VIRTUAL_HEIGHT, and self.colors are defined elsewhere in the class
         # pygame doesn't support directly setting alpha on surfaces, so we create an alpha surface
         #screen = pygame.display.get_surface()  # Get the current display surface
@@ -117,7 +118,7 @@ class StartState(State):
         Global.virtual_screen.blit(alpha_surf, (Global.VIRTUAL_WIDTH / 2 - 76, Global.VIRTUAL_HEIGHT / 2 + y - 11))
         
         # Assuming the method draw_text_shadow and the font have been defined elsewhere
-        self.draw_text_shadow('MATCH 3', Global.VIRTUAL_HEIGHT / 2 + y)
+        self.drawTextShadow('MATCH 3', Global.VIRTUAL_HEIGHT / 2 + y)
         
         # Print MATCH 3 letters in their corresponding current colors
         for i in range(6):
@@ -131,7 +132,7 @@ class StartState(State):
 
 #--------------------------------------------------------------------------------------------------
             
-    def draw_text_shadow(self, text, y):
+    def drawTextShadow(self, text, y):
         color = (34, 32, 52, 1)
         font = Global.assets['fonts']['large']
         text_surface = font.render(text, True, color)
@@ -140,3 +141,34 @@ class StartState(State):
         Global.virtual_screen.blit(text_surface, (x_pos + 1, y + 1))
         Global.virtual_screen.blit(text_surface, (x_pos, y + 1))
         Global.virtual_screen.blit(text_surface, (x_pos + 1, y + 2))
+
+#--------------------------------------------------------------------------------------------------
+        
+    def drawOptions(self, y):
+        # draw rect behind start and quit game text
+        alpha_surf = pygame.Surface((150, 58), pygame.SRCALPHA)
+        alpha_surf.fill((255, 255, 255, 128))
+        Global.virtual_screen.blit(alpha_surf, (Global.VIRTUAL_WIDTH / 2 - 76, Global.VIRTUAL_HEIGHT / 2 + y))
+        
+        # draw Start text
+        font = Global.assets['fonts']['medium']
+        #self.drawTextShadow('Start', Global.VIRTUAL_HEIGHT / 2 + y + 8)
+        
+        if self.currentMenuItem == 1:
+            color = (99/255, 155/255, 1, 1)
+        else:
+            color = (48/255, 96/255, 130/255, 1)
+        
+        text_surface = font.render('Start', True, color)
+        Global.virtual_screen.blit(text_surface, (Global.VIRTUAL_WIDTH / 2, Global.VIRTUAL_HEIGHT / 2 + y + 8))
+        
+        # draw Quit Game text
+        #self.drawTextShadow('Quit Game', Global.VIRTUAL_HEIGHT / 2 + y + 33)
+        
+        if self.currentMenuItem == 2:
+            color = (99/255, 155/255, 1, 1)
+        else:
+            color = (48/255, 96/255, 130/255, 1)
+        
+        text_surface = font.render('Quit Game', True, color)
+        Global.virtual_screen.blit(text_surface, (Global.VIRTUAL_WIDTH / 2, Global.VIRTUAL_HEIGHT / 2 + y + 33))
