@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://csukf81u6y573"]
+
+[ext_resource type="Texture2D" uid="uid://docnkvfhcnqg3" path="res://icon.svg" id="1_2q0ls"]
+[ext_resource type="Script" path="res://GDGuy.cs" id="2_kl7fe"]
+
+[node name="GDGuy" type="Sprite2D"]
+texture = ExtResource("1_2q0ls")
+script = ExtResource("2_kl7fe")
+
+[node name="Clock" type="Timer" parent="."]

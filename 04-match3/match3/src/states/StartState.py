@@ -100,6 +100,17 @@ class StartState(State):
         # draw the background starting at top left (0, 0)
         Global.virtual_screen.blit(Global.assets['images']['background'], (self.backgroundX, 0))
 
+        # Keep the background and tiles a little darker than normal by drawing
+        # a semi-transparent black rectangle over the entire screen.
+        # First, create a transparent surface that matches the screen size.
+        alpha_surf = pygame.Surface((Global.VIRTUAL_WIDTH, Global.VIRTUAL_HEIGHT), pygame.SRCALPHA)
+
+        # Fill this surface with a semi-transparent black color (RGBA).
+        alpha_surf.fill((0, 0, 0, 128))  # RGBA: 128/255 for alpha translates to 128 in Pygame
+
+        # Blit (copy) this semi-transparent surface onto the main screen to achieve the darkening effect.
+        Global.virtual_screen.blit(alpha_surf, (0, 0))
+
         # Draw the title of the game
         #draw_text('Match 3', Global.assets['fonts']['large'], Global.VIRTUAL_WIDTH / 2, Global.VIRTUAL_HEIGHT/3, (255, 255, 255))
         self.drawMatch3Text(-60)
@@ -145,6 +156,7 @@ class StartState(State):
 #--------------------------------------------------------------------------------------------------
         
     def drawOptions(self, y):
+
         # draw rect behind start and quit game text
         alpha_surf = pygame.Surface((150, 58), pygame.SRCALPHA)
         alpha_surf.fill((255, 255, 255, 128))
@@ -152,23 +164,18 @@ class StartState(State):
         
         # draw Start text
         font = Global.assets['fonts']['medium']
-        #self.drawTextShadow('Start', Global.VIRTUAL_HEIGHT / 2 + y + 8)
         
         if self.currentMenuItem == 1:
             color = (99/255, 155/255, 1, 1)
         else:
             color = (48/255, 96/255, 130/255, 1)
         
-        text_surface = font.render('Start', True, color)
-        Global.virtual_screen.blit(text_surface, (Global.VIRTUAL_WIDTH / 2, Global.VIRTUAL_HEIGHT / 2 + y + 8))
+        draw_text('Start', Global.assets['fonts']['medium'], Global.VIRTUAL_WIDTH / 2, Global.VIRTUAL_HEIGHT / 2 + y + 8, color)
         
         # draw Quit Game text
-        #self.drawTextShadow('Quit Game', Global.VIRTUAL_HEIGHT / 2 + y + 33)
-        
         if self.currentMenuItem == 2:
             color = (99/255, 155/255, 1, 1)
         else:
             color = (48/255, 96/255, 130/255, 1)
         
-        text_surface = font.render('Quit Game', True, color)
-        Global.virtual_screen.blit(text_surface, (Global.VIRTUAL_WIDTH / 2, Global.VIRTUAL_HEIGHT / 2 + y + 33))
+        draw_text('Quit Game', Global.assets['fonts']['medium'], Global.VIRTUAL_WIDTH / 2, Global.VIRTUAL_HEIGHT / 2 + y + 33, color)

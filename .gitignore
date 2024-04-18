@@ -1,6 +1,4 @@
 
-# Mac OS files
-.DS_Store
 
 # Python files
 *.pyc
@@ -11,3 +9,57 @@ __pycache__/
 # python virtual environment
 venv/
 
+
+# Godot-specific ignores
+**/*.import
+export.cfg
+export_presets.cfg
+mono/
+**/*.mono.metadata/
+*.csproj
+*.sln
+*.user
+*.pdb
+**/*.mdb
+**/*.swp
+
+# Godot generated folders
+.logs/
+import/
+.cache/
+.local/
+addons/
+
+# Generated on export
+ios/
+android/build/
+macos/
+linux/
+windows/
+**/*.app/
+
+# Godot user-specific
+.editor_settings-3.tres
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temp files
+**/*.tmp
+**/*temp*
+**/*tmp*
+
+# Build files
+bin/
+obj/
+logs/
+
+# Godot Editor settings
+.godot

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://51b2le8ixxj1"]
+
+[ext_resource type="PackedScene" uid="uid://dfxuvynuvwpwt" path="res://Player.tscn" id="1_2cceg"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" parent="." instance=ExtResource("1_2cceg")]
+position = Vector2(363, 211)
+offset = Vector2(2.08165e-12, 2.08165e-12)
