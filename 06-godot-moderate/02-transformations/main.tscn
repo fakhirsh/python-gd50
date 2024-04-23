@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://7m16ci8sxwk1"]
+
+[ext_resource type="Texture2D" uid="uid://bfyutj82hl7a2" path="res://icon.svg" id="1_hf3pd"]
+[ext_resource type="Script" path="res://Parent.cs" id="2_fygg6"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Parent" type="Sprite2D" parent="."]
+position = Vector2(240, 205)
+texture = ExtResource("1_hf3pd")
+script = ExtResource("2_fygg6")
+
+[node name="Child1" type="Sprite2D" parent="Parent"]
+position = Vector2(105.755, 98.7555)
+rotation = 2.0944
+scale = Vector2(0.234375, 0.234375)
+texture = ExtResource("1_hf3pd")
+
+[node name="Child2" type="Sprite2D" parent="Parent"]
+position = Vector2(113.755, 41.7555)
+rotation = -0.523599
+scale = Vector2(0.340352, 0.340352)
+texture = ExtResource("1_hf3pd")

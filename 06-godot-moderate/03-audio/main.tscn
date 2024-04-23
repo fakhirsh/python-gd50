@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bncrnyhoeiv6b"]
+
+[ext_resource type="AudioStream" uid="uid://bq5oummx4sjry" path="res://music.mp3" id="1_3s87k"]
+[ext_resource type="Script" path="res://Root.cs" id="1_l2p02"]
+[ext_resource type="Texture2D" uid="uid://1ammjgerdm57" path="res://icon.svg" id="2_wkvl7"]
+[ext_resource type="Script" path="res://Player.cs" id="3_oecqq"]
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_l2p02")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_3s87k")
+volume_db = -20.75
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(588, 327)
+texture = ExtResource("2_wkvl7")
+script = ExtResource("3_oecqq")
+
+[node name="Sound1" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(588, 330)
+attenuation = 3.86375
