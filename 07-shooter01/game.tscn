@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://byg0hpfxbwpyw"]
+
+[ext_resource type="PackedScene" uid="uid://baclx41nh7tev" path="res://Player.tscn" id="1_tku20"]
+[ext_resource type="PackedScene" uid="uid://c7vjykuioawax" path="res://Enemy.tscn" id="2_x3cxo"]
+[ext_resource type="Texture2D" uid="uid://brrm4se8rpjs0" path="res://icon.svg" id="3_3vvhc"]
+
+[node name="Root" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_tku20")]
+position = Vector2(139, 364)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = -700
+limit_top = -700
+limit_right = 700
+limit_bottom = 700
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.5
+drag_top_margin = 0.5
+drag_right_margin = 0.5
+drag_bottom_margin = 0.5
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Enemy" parent="." instance=ExtResource("2_x3cxo")]
+position = Vector2(664, 123)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(72, 69)
+texture = ExtResource("3_3vvhc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(17, 733)
+texture = ExtResource("3_3vvhc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D"]
+position = Vector2(1210, -21)
+texture = ExtResource("3_3vvhc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D/Sprite2D"]
+texture_filter = 1
+position = Vector2(-58, -895)
+texture = ExtResource("3_3vvhc")
