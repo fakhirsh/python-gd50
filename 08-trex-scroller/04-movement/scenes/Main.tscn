@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://v0mubfsxm6e0"]
+
+[ext_resource type="Script" path="res://scenes/Main.cs" id="1_46u20"]
+[ext_resource type="PackedScene" uid="uid://cwg8kohtlmomm" path="res://scenes/Background.tscn" id="1_sakvr"]
+[ext_resource type="PackedScene" uid="uid://cpx33kotpfdjc" path="res://scenes/Ground.tscn" id="2_hosry"]
+[ext_resource type="PackedScene" uid="uid://3ik8p8wrqs1g" path="res://scenes/Dino.tscn" id="3_ovk3y"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_46u20")
+
+[node name="Background" parent="." instance=ExtResource("1_sakvr")]
+
+[node name="Dino" parent="." instance=ExtResource("3_ovk3y")]
+position = Vector2(156, 486)
+
+[node name="Ground" parent="." instance=ExtResource("2_hosry")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
