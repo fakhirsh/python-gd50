@@ -12,6 +12,8 @@ public partial class Main : Node2D
 	private float speed;
 	private float START_SPEED = 200.0f;
 	private float MAX_SPEED = 700.0f;
+	private float SPEED_MODIFIER = 500.0f;
+
 	// Called when the node enters the scene tree for the first time.
 	// Reference to Dino
 	private CharacterBody2D dino;
@@ -44,14 +46,14 @@ public partial class Main : Node2D
 	{
 		if (gameRunning){
 		
-			speed = START_SPEED * (float)delta;
+			speed = (START_SPEED + score / SPEED_MODIFIER) * (float)delta;
 			
 			dino.Position += new Vector2(speed, 0);
 			camera.Position += new Vector2(speed, 0);
 			
 			score += (int)speed;
 			
-			GD.Print(score);
+			GD.Print(speed);
 
 			if (camera.Position.X - ground.Position.X  > screen_size.X * 1.5){
 				ground.Position += new Vector2(screen_size.X, 0);

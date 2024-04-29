@@ -63,3 +63,5 @@ logs/
 
 # Godot Editor settings
 .godot
+
+.vscode

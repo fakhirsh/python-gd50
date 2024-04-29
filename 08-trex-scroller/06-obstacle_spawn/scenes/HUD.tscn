@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3hhj05yjw74a"]
+
+[ext_resource type="FontFile" uid="uid://cjk884hsimpq1" path="res://assets/fonts/retro.ttf" id="1_ry6yl"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_right = 67.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_ry6yl")
+theme_override_font_sizes/font_size = 30
+text = "SCORE:"
+
+[node name="StartLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -11.5
+offset_right = 107.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ry6yl")
+theme_override_font_sizes/font_size = 30
+text = "PRESS SPACE TO PLAY"
+
+[node name="HighScoreLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -121.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("1_ry6yl")
+theme_override_font_sizes/font_size = 30
+text = "HIGH SCORE:"
