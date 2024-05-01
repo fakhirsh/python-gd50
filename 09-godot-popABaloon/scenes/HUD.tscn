@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://2bpcxe7sm0kb"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="ScoreLbl" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 30
+text = "Score: 0"
+
+[node name="TimeLbl" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.5
+offset_right = 56.5
+offset_bottom = 42.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Time: 0"
+
+[node name="LivesLbl" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -113.0
+offset_bottom = 42.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "Lives: 5"

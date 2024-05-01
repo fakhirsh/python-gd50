@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://voqf4oxf68jt"]
+
+[ext_resource type="Script" path="res://scenes/Balloon.cs" id="1_65c8w"]
+[ext_resource type="Texture2D" uid="uid://bs4heq3q3c5kw" path="res://assets/balloon_blue.png" id="1_kad7i"]
+[ext_resource type="AudioStream" uid="uid://b1j5wr871uk28" path="res://assets/pop.mp3" id="3_c2box"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6jln"]
+atlas = ExtResource("1_kad7i")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lo3mk"]
+atlas = ExtResource("1_kad7i")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3rhr"]
+atlas = ExtResource("1_kad7i")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyi17"]
+atlas = ExtResource("1_kad7i")
+region = Rect2(0, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whcgl"]
+atlas = ExtResource("1_kad7i")
+region = Rect2(16, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydese"]
+atlas = ExtResource("1_kad7i")
+region = Rect2(32, 32, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3fti4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6jln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lo3mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3rhr")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyi17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whcgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydese")
+}],
+"loop": false,
+"name": &"pop",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y84o2"]
+radius = 36.0
+height = 82.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h2wsl"]
+height = 48.0
+
+[node name="BlueBalloon" type="Node2D"]
+script = ExtResource("1_65c8w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(3.8147e-06, 3.05176e-05)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_3fti4")
+animation = &"pop"
+autoplay = "fly"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="OvalCollShapeLarge" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -34)
+shape = SubResource("CapsuleShape2D_y84o2")
+
+[node name="OvalCollShapeSmall" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 14)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_h2wsl")
+
+[node name="PopSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_c2box")
