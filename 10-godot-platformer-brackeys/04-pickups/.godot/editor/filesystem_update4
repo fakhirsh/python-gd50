@@ -1,0 +1,6 @@
+res://scenes/Game.tscn
+res://scenes/Platform.tscn
+res://scenes/Coin.tscn
+res://scenes/Player.tscn
+res://scenes/Coin.cs
+res://scripts/Player.cs

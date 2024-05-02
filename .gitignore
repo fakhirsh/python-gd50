@@ -61,7 +61,4 @@ bin/
 obj/
 logs/
 
-# Godot Editor settings
-.godot
-
 .vscode

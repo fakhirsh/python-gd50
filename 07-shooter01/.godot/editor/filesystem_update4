@@ -1,0 +1,8 @@
+res://main.tscn
+res://Player.cs
+res://bullet.tscn
+res://Player.tscn
+res://game.tscn
+res://Bullet.cs
+res://Enemy.tscn
+res://Enemy.cs

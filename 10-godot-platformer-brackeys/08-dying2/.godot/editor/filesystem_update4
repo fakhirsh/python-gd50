@@ -1,0 +1,5 @@
+res://scenes/Game.tscn
+res://scripts/Coin.cs
+res://scripts/Killzone.cs
+res://scripts/Player.cs
+res://scripts/Slime.cs

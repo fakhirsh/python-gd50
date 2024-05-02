@@ -1,0 +1,15 @@
+RayCast2D
+Node
+CollisionShape2D
+AnimatedSprite2D
+Node2D
+Timer
+Area2D
+AudioStreamPlayer2D
+AnimationPlayer
+Sprite2D
+AnimatableBody2D
+TileMap
+StaticBody2D
+Camera2D
+CharacterBody2D

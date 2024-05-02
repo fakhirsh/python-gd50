@@ -1,0 +1,9 @@
+AudioStreamPlayer2D
+Label
+CanvasLayer
+Timer
+CollisionShape2D
+Area2D
+Node2D
+Sprite2D
+AnimatedSprite2D

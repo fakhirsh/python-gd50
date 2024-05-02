@@ -408,6 +408,21 @@ texture = ExtResource("2_gjgr2")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_m7fmf")
 
+[sub_resource type="Animation" id="Animation_iqwb1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(864, 309)]
+}
+
 [sub_resource type="Animation" id="Animation_3nbio"]
 resource_name = "move"
 length = 2.5
@@ -423,21 +438,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(864, 309), Vector2(944, 309)]
-}
-
-[sub_resource type="Animation" id="Animation_iqwb1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(864, 309)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a4c56"]

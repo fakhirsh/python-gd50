@@ -1,0 +1,13 @@
+Node
+Timer
+CollisionShape2D
+Area2D
+AudioStreamPlayer2D
+AnimatedSprite2D
+AnimationPlayer
+Sprite2D
+AnimatableBody2D
+TileMap
+StaticBody2D
+Camera2D
+CharacterBody2D

@@ -1,0 +1,6 @@
+AudioStreamPlayer2D
+CharacterBody2D
+Sprite2D
+AudioStreamPlayer
+AudioListener2D
+Node2D

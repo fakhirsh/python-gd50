@@ -1,0 +1,13 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1714589808
+Bullet.cs::CSharpScript::-1::1713896620::0::1::::<>Node2D<>::
+bullet.tscn::PackedScene::7489269556624043972::1713896668::0::1::::<><>::res://Bullet.cs<>uid://cfjp2i7skq4gi::::res://assets/bullet.png
+Enemy.cs::CSharpScript::-1::1713894668::0::1::::<>Node2D<>::
+Enemy.tscn::PackedScene::7062826165138916687::1713896668::0::1::::<><>::uid://brrm4se8rpjs0::::res://icon.svg<>res://Enemy.cs
+game.tscn::PackedScene::4084870419528240994::1713897125::0::1::::<><>::uid://baclx41nh7tev::::res://Player.tscn<>uid://c7vjykuioawax::::res://Enemy.tscn<>uid://brrm4se8rpjs0::::res://icon.svg
+icon.svg::CompressedTexture2D::3615506792417314889::1713839790::1713839794::1::::<><>::
+Player.cs::CSharpScript::-1::1713896664::0::1::::<>Node2D<>::
+Player.tscn::PackedScene::2391259963324828025::1713896668::0::1::::<><>::uid://yuyluor8aoh8::::res://assets/player.png<>res://Player.cs
+::res://assets/::1713862110
+bullet.png::CompressedTexture2D::5143324427142237224::1713845598::1713845614::1::::<><>::
+player.png::CompressedTexture2D::1727297726864104183::1713862107::1713862110::1::::<><>::
