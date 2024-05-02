@@ -11,13 +11,10 @@ venv/
 
 
 # Godot-specific ignores
-**/*.import
 export.cfg
 export_presets.cfg
 mono/
 **/*.mono.metadata/
-*.csproj
-*.sln
 *.user
 *.pdb
 **/*.mdb
