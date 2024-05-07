@@ -1,0 +1,6 @@
+res://scenes/world.tscn
+res://materials/dirtt_material.tres
+res://scenes/Player.tscn
+res://scripts/World.cs
+res://scenes/Player.cs
+res://scripts/Player.cs

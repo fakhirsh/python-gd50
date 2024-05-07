@@ -1,0 +1,11 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1715020311
+icon.svg::CompressedTexture2D::505193211286922190::1715014809::1715014809::1::::<><>::
+::res://materials/::1715015807
+dirtt_material.tres::StandardMaterial3D::7193348381267686771::1715015807::0::1::::<><>::
+::res://scenes/::1715021200
+Player.tscn::PackedScene::8643730628961423155::1715021200::0::1::::<><>::res://scenes/Player.cs
+Player.cs::CSharpScript::-1::1715023639::0::1::::<>CharacterBody3D<>::
+world.tscn::PackedScene::675093022616925963::1715021200::0::1::::<><>::res://scripts/World.cs<>uid://daqrnq15r882b::::res://materials/dirtt_material.tres<>uid://dvfc8ltji0qnr::::res://scenes/Player.tscn
+::res://scripts/::1715020255
+World.cs::CSharpScript::-1::1715020255::0::1::::<>Node<>::
