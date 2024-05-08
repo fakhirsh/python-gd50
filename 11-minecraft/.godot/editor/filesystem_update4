@@ -2,3 +2,4 @@ res://scenes/Blocks.tscn
 res://materials/dirtt_material.tres
 res://scenes/world.tscn
 res://resources/blocks.tres
+res://scenes/Player.tscn
