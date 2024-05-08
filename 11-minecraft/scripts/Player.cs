@@ -11,7 +11,7 @@ public partial class Player : CharacterBody3D
 	public float gravity = 16f;
 
 // Mouse look variables
-    private const float MouseSensitivity = 0.005f;
+    private const float MouseSensitivity = 0.003f;
     private float _rotationX;
     private float _rotationY;
 
