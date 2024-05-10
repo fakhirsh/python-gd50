@@ -1,3 +1,7 @@
+Line2D
+Control
+Sprite2D
+Sprite3D
 RayCast3D
 CollisionShape3D
 StaticBody3D
@@ -9,5 +13,3 @@ GridMap
 Camera3D
 CharacterBody3D
 WorldEnvironment
-Camera2D
-CSGBox3D

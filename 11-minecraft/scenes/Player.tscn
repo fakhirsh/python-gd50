@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvfc8ltji0qnr"]
+[gd_scene load_steps=5 format=3 uid="uid://dvfc8ltji0qnr"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_4gpnn"]
+[ext_resource type="PackedScene" uid="uid://d047pngc8tpb7" path="res://scenes/crosshair.tscn" id="2_3vr32"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6ufax"]
 radius = 1.0
@@ -22,6 +23,8 @@ shape = SubResource("CapsuleShape3D_p6s2y")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43527, -0.0825162)
+
+[node name="crosshair" parent="Camera3D" instance=ExtResource("2_3vr32")]
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 2.08165e-12, 0, -0.0822527)

@@ -49,6 +49,40 @@ public partial class Player : CharacterBody3D
 			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, 0.5f);
 		}
 
+		var ray = GetNode<RayCast3D>("Camera3D/RayCast3D");
+
+		if (Input.IsActionJustPressed("left_click")){
+			//GD.Print("Left Click");
+			if (ray.IsColliding()){
+				//GD.Print("Colliding with something");
+				var collider = ray.GetCollider();
+                if (collider != null)
+                {
+                    //GD.Print($"Colliding with: {collider}");
+                    //GD.Print($"Type: {collider.GetType().Name}");
+					if (collider is GridMap map)
+					{
+						GD.Print("Colliding with gridmap");
+						map.AddBlock(ray.GetCollisionPoint() + ray.GetCollisionNormal() * 0.1f, 1);
+					}
+                }
+
+			}
+		}
+		if (Input.IsActionJustPressed("right_click")){
+			if (ray.IsColliding()){
+				var collider = ray.GetCollider();
+                if (collider != null)
+                {
+					if (collider is GridMap map)
+					{
+						map.DestroyBlock(ray.GetCollisionPoint() - ray.GetCollisionNormal() * 0.1f);
+					}
+                }
+
+			}
+		}
+
 		Velocity = velocity;
 		MoveAndSlide();
 	}
@@ -64,6 +98,7 @@ public partial class Player : CharacterBody3D
 				0
 			);
 		}
+
     }
 
     

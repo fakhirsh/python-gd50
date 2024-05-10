@@ -1,5 +1,9 @@
-res://scenes/Blocks.tscn
-res://materials/dirtt_material.tres
 res://scenes/world.tscn
+res://materials/dirtt_material.tres
 res://resources/blocks.tres
+res://scenes/Blocks.tscn
 res://scenes/Player.tscn
+res://scripts/Player.cs
+res://scripts/World.cs
+res://scripts/GridMap.cs
+res://scenes/crosshair.tscn
