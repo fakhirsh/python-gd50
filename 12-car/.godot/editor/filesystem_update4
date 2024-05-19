@@ -3,3 +3,6 @@ res://scenes/TestScene1.tscn
 res://scenes/Ball.tscn
 res://scripts/Ball.cs
 res://scenes/BallGame.tscn
+res://scenes/GTR.tscn
+res://scenes/TestScene2.tscn
+res://scenes/Lambo.tscn

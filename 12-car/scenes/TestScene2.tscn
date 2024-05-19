@@ -1,0 +1,148 @@
+[gd_scene load_steps=11 format=3 uid="uid://bob3h8umfdgjw"]
+
+[ext_resource type="PackedScene" uid="uid://cqwfetb0os4px" path="res://scenes/Lambo.tscn" id="1_6ommc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4tm45"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_energy_multiplier = 1.05
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_a5mx4"]
+sky_material = SubResource("ProceduralSkyMaterial_4tm45")
+
+[sub_resource type="Environment" id="Environment_wmfhn"]
+background_mode = 2
+sky = SubResource("Sky_a5mx4")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8mps3"]
+albedo_color = Color(0.117647, 0.14902, 0.0823529, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yx05o"]
+material = SubResource("StandardMaterial3D_8mps3")
+size = Vector3(500, 1, 500)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61k0g"]
+size = Vector3(500, 1, 500)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k5d8o"]
+size = Vector3(2, 10, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkm1d"]
+albedo_color = Color(0.345098, 0.219608, 0.203922, 1)
+metallic = 0.14
+
+[sub_resource type="BoxMesh" id="BoxMesh_wevvu"]
+material = SubResource("StandardMaterial3D_gkm1d")
+size = Vector3(2, 10, 1)
+
+[node name="TestScene2" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wmfhn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.407564, 0.289641, 0, 0.579281, 0.815128, -0.5, 0.705921, -0.501672, 0, 0, 0)
+light_energy = 2.5
+shadow_enabled = true
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_yx05o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_61k0g")
+
+[node name="Obstacles" type="Node3D" parent="."]
+
+[node name="Obstacle" type="StaticBody3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.113, 2.5, 26.1821)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Obstacle"]
+shape = SubResource("BoxShape3D_k5d8o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Obstacle"]
+mesh = SubResource("BoxMesh_wevvu")
+
+[node name="Obstacle2" type="StaticBody3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.93605, 2.5, 23.4028)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Obstacle2"]
+shape = SubResource("BoxShape3D_k5d8o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Obstacle2"]
+mesh = SubResource("BoxMesh_wevvu")
+
+[node name="Obstacle3" type="StaticBody3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -47.4816)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Obstacle3"]
+shape = SubResource("BoxShape3D_k5d8o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Obstacle3"]
+mesh = SubResource("BoxMesh_wevvu")
+
+[node name="Obstacle4" type="StaticBody3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.7426, 2.5, -18.6201)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Obstacle4"]
+shape = SubResource("BoxShape3D_k5d8o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Obstacle4"]
+mesh = SubResource("BoxMesh_wevvu")
+
+[node name="Obstacle5" type="StaticBody3D" parent="Obstacles"]
+transform = Transform3D(-0.99897, -0.0453631, -3.89393e-08, -0.00772119, 0.170034, -0.985408, 0.0447011, -0.984394, -0.170209, -37.772, 1.95627, -9.10694)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Obstacle5"]
+shape = SubResource("BoxShape3D_k5d8o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Obstacle5"]
+transform = Transform3D(1, 5.00157e-10, 7.12437e-09, -1.00132e-08, 1, 1.43123e-07, 1.06218e-09, 4.86231e-08, 1, 0.00394058, 0.000179291, -4.76837e-07)
+mesh = SubResource("BoxMesh_wevvu")
+
+[node name="Obstacle8" type="StaticBody3D" parent="Obstacles"]
+transform = Transform3D(-0.99897, -0.0453631, -3.89393e-08, -0.00772119, 0.170034, -0.985408, 0.0447011, -0.984394, -0.170209, -35.8051, 1.95627, -9.10694)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Obstacle8"]
+shape = SubResource("BoxShape3D_k5d8o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Obstacle8"]
+transform = Transform3D(1, 5.00157e-10, 8.39517e-09, -1.74638e-08, 1, 1.97175e-07, 1.06218e-09, 4.86231e-08, 1, -0.0250244, -0.00113583, -7.15256e-07)
+mesh = SubResource("BoxMesh_wevvu")
+
+[node name="Obstacle9" type="StaticBody3D" parent="Obstacles"]
+transform = Transform3D(-0.99897, -0.0453631, -3.89393e-08, -0.00772119, 0.170034, -0.985408, 0.0447011, -0.984394, -0.170209, -33.8285, 1.95627, -9.10694)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Obstacle9"]
+transform = Transform3D(1, -8.57736e-10, 2.22092e-10, -2.56267e-09, 1, 3.7795e-08, -8.00468e-10, 8.22262e-09, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_k5d8o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Obstacle9"]
+transform = Transform3D(1, 5.00157e-10, 7.75977e-09, -1.37385e-08, 1, 1.70149e-07, 1.06218e-09, 4.86231e-08, 1, -0.0526047, -0.00238895, 0)
+mesh = SubResource("BoxMesh_wevvu")
+
+[node name="Obstacle6" type="StaticBody3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.5312, 2.5, 27.6904)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Obstacle6"]
+shape = SubResource("BoxShape3D_k5d8o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Obstacle6"]
+mesh = SubResource("BoxMesh_wevvu")
+
+[node name="Obstacle7" type="StaticBody3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7992, 2.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Obstacle7"]
+shape = SubResource("BoxShape3D_k5d8o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Obstacle7"]
+mesh = SubResource("BoxMesh_wevvu")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.368757, 0, 0.929526, 0, 1, 0, -0.929526, 0, 0.368757, -25.8677, 2.79161, -2.57503)
+
+[node name="Lambo" parent="." instance=ExtResource("1_6ommc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3363, 6.84143, -10.2675)

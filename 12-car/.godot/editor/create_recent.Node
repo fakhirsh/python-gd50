@@ -1,5 +1,7 @@
-Camera3D
+VehicleWheel3D
+VehicleBody3D
 Node3D
+Camera3D
 GraphElement
 MeshInstance3D
 CollisionShape3D
