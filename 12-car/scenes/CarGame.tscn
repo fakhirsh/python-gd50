@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://blyyeejo7b2wj"]
+[gd_scene load_steps=7 format=3 uid="uid://bvvtcddcfcuym"]
 
-[ext_resource type="PackedScene" uid="uid://to2jcpqgxhlo" path="res://assets/tracks/track_k3.glb" id="1_jt1jq"]
-[ext_resource type="Script" path="res://scripts/World.cs" id="1_wrhaq"]
-[ext_resource type="PackedScene" uid="uid://lcnhhk6hdech" path="res://scenes/Ball.tscn" id="2_koiuk"]
+[ext_resource type="PackedScene" uid="uid://to2jcpqgxhlo" path="res://assets/tracks/track_k3.glb" id="1_3g7e6"]
+[ext_resource type="Script" path="res://scripts/World.cs" id="1_p3tj5"]
+[ext_resource type="PackedScene" uid="uid://cqwfetb0os4px" path="res://scenes/Lambo.tscn" id="2_kxsqi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1bxqt"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -16,8 +16,8 @@ background_mode = 2
 sky = SubResource("Sky_vudp7")
 tonemap_mode = 2
 
-[node name="BallGame" type="Node3D"]
-script = ExtResource("1_wrhaq")
+[node name="CarGame" type="Node3D"]
+script = ExtResource("1_p3tj5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2bi8v")
@@ -28,11 +28,11 @@ light_color = Color(1, 0.937255, 0.913725, 1)
 light_energy = 0.4
 shadow_enabled = true
 
-[node name="RaceTrack" parent="." instance=ExtResource("1_jt1jq")]
+[node name="RaceTrack" parent="." instance=ExtResource("1_3g7e6")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 
-[node name="Ball" parent="." instance=ExtResource("2_koiuk")]
-transform = Transform3D(-4.37114e-08, -3.48787e-16, -1, 3.48787e-16, 1, -3.48787e-16, 1, -3.48787e-16, -4.37114e-08, 2.40347, 1.35522, -12.1458)
+[node name="Lambo" parent="." instance=ExtResource("2_kxsqi")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.28434, 0.25, -12.315)
 
-[node name="Camera3D" type="Camera3D" parent="Ball"]
-transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, -3.48787e-16, 1, -3.48787e-16, -1, -3.48787e-16, -4.37114e-08, 6.99669, 2.93147, -0.0131383)
+[node name="Camera3D" type="Camera3D" parent="Lambo"]
+transform = Transform3D(-1, 1.0311e-08, -8.61892e-08, -1.0311e-08, 0.97178, 0.235888, 8.61892e-08, 0.235888, -0.97178, 0.0867538, 3.5226, -7.38985)

@@ -6,3 +6,8 @@ res://scenes/BallGame.tscn
 res://scenes/GTR.tscn
 res://scenes/TestScene2.tscn
 res://scenes/Lambo.tscn
+res://scenes/VehicleController.cs
+res://scenes/CarGame.tscn
+res://scenes/World.cs
+res://scripts/VehicleController.cs
+res://scripts/World.cs

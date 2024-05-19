@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://cqwfetb0os4px"]
+[gd_scene load_steps=19 format=3 uid="uid://cqwfetb0os4px"]
 
+[ext_resource type="Script" path="res://scripts/VehicleController.cs" id="1_pvmev"]
 [ext_resource type="Texture2D" uid="uid://cjaoxpkdgky1g" path="res://assets/cars/lambo_Lamborginhi Aventador_diffuse.jpg" id="1_ym8tf"]
 [ext_resource type="Texture2D" uid="uid://c76xnm8nipu63" path="res://assets/cars/lambo_Lamborginhi Aventador_spec.png" id="2_n8cmd"]
 
@@ -229,6 +230,7 @@ shadow_mesh = SubResource("ArrayMesh_pdntn")
 
 [node name="Lambo" type="VehicleBody3D"]
 gravity_scale = 4.0
+script = ExtResource("1_pvmev")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.089632, -2.38419e-07, -0.00297832)
@@ -248,6 +250,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40271, 0.520909, 2.17164)
 use_as_steering = true
 wheel_roll_influence = 0.01
+wheel_radius = 0.54
 wheel_rest_length = 0.2
 wheel_friction_slip = 1.4
 suspension_stiffness = 120.0
@@ -260,6 +263,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25709, 0.525305, 2.16249)
 use_as_steering = true
 wheel_roll_influence = 0.01
+wheel_radius = 0.54
 wheel_rest_length = 0.2
 wheel_friction_slip = 1.4
 suspension_stiffness = 120.0
@@ -272,10 +276,11 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32767, 0.545965, -1.95404)
 use_as_traction = true
 wheel_roll_influence = 0.01
+wheel_radius = 0.54
 wheel_rest_length = 0.2
 wheel_friction_slip = 1.1
 suspension_travel = 0.15
-suspension_stiffness = 80.0
+suspension_stiffness = 100.0
 
 [node name="Wheel_RL" type="MeshInstance3D" parent="Rear_Left"]
 mesh = SubResource("ArrayMesh_ukaeu")
@@ -285,11 +290,15 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2164, 0.545086, -1.95875)
 use_as_traction = true
 wheel_roll_influence = 0.01
+wheel_radius = 0.54
 wheel_rest_length = 0.2
 wheel_friction_slip = 1.1
 suspension_travel = 0.15
-suspension_stiffness = 80.0
+suspension_stiffness = 100.0
 
 [node name="Wheel_RR" type="MeshInstance3D" parent="Rear_Right"]
 mesh = SubResource("ArrayMesh_igtsl")
 skeleton = NodePath("")
+
+[node name="CenterOfMass" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.8, 1.6)
