@@ -120,7 +120,7 @@ shape = SubResource("BoxShape3D_k5d8o")
 mesh = SubResource("BoxMesh_wevvu")
 
 [node name="Ball" parent="." instance=ExtResource("1_xy0dn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4315, 8.17971, 0.873985)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4315, 32.0632, 0.873985)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29.4461, 45.888)
