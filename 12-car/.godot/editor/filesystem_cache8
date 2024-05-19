@@ -1,0 +1,17 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1716134980
+icon.svg::CompressedTexture2D::1164001769738878040::1716124444::1716124447::1::::<><>::
+::res://assets/::1716126492
+::res://assets/cars/::1716126169
+soccer_ball.glb::PackedScene::1400832885150318943::1716010770::1716126169::1::::<><>::uid://cpkelc6qc1g8p::::res://assets/cars/soccer_ball_0.jpg<>uid://rfuuo5f7i0hh::::res://assets/cars/soccer_ball_1.png<>uid://me1samg3meq1::::res://assets/cars/soccer_ball_2.jpg
+soccer_ball_0.jpg::CompressedTexture2D::5846580464867611961::1716126067::1716126069::1::::<><>::
+soccer_ball_1.png::CompressedTexture2D::1204783068291594553::1716126068::1716126069::1::::<><>::
+soccer_ball_2.jpg::CompressedTexture2D::852134439623003690::1716126068::1716126069::1::::<><>::
+::res://assets/tracks/::1716126841
+track_k3.glb::PackedScene::1364144877583954552::1616352720::1716126841::1::::<><>::
+::res://scenes/::1716133234
+Ball.tscn::PackedScene::777008241519244355::1716133234::0::1::::<><>::uid://cpkelc6qc1g8p::::res://assets/cars/soccer_ball_0.jpg<>res://scripts/Ball.cs<>uid://rfuuo5f7i0hh::::res://assets/cars/soccer_ball_1.png<>uid://me1samg3meq1::::res://assets/cars/soccer_ball_2.jpg
+Game.tscn::PackedScene::3209507605486476905::1716133234::0::1::::<><>::uid://to2jcpqgxhlo::::res://assets/tracks/track_k3.glb<>uid://lcnhhk6hdech::::res://scenes/Ball.tscn
+TestScene1.tscn::PackedScene::8810131750934933881::1716133234::0::1::::<><>::uid://lcnhhk6hdech::::res://scenes/Ball.tscn
+::res://scripts/::1716127513
+Ball.cs::CSharpScript::-1::1716129296::0::1::::<>Node3D<>::

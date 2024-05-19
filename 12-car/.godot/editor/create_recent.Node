@@ -1,0 +1,7 @@
+Camera3D
+Node3D
+GraphElement
+MeshInstance3D
+CollisionShape3D
+RigidBody3D
+StaticBody3D
