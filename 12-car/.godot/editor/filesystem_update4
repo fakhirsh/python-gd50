@@ -1,13 +1,9 @@
-res://scenes/Game.tscn
-res://scenes/TestScene1.tscn
-res://scenes/Ball.tscn
-res://scripts/Ball.cs
 res://scenes/BallGame.tscn
-res://scenes/GTR.tscn
-res://scenes/TestScene2.tscn
+res://scenes/Ball.tscn
 res://scenes/Lambo.tscn
-res://scenes/VehicleController.cs
+res://scenes/TestScene2.tscn
 res://scenes/CarGame.tscn
-res://scenes/World.cs
+res://scripts/Ball.cs
+res://scripts/CarCamera.cs
 res://scripts/VehicleController.cs
 res://scripts/World.cs

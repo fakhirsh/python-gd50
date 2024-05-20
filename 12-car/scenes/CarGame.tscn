@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvvtcddcfcuym"]
+[gd_scene load_steps=8 format=3 uid="uid://bvvtcddcfcuym"]
 
 [ext_resource type="PackedScene" uid="uid://to2jcpqgxhlo" path="res://assets/tracks/track_k3.glb" id="1_3g7e6"]
 [ext_resource type="Script" path="res://scripts/World.cs" id="1_p3tj5"]
 [ext_resource type="PackedScene" uid="uid://cqwfetb0os4px" path="res://scenes/Lambo.tscn" id="2_kxsqi"]
+[ext_resource type="Script" path="res://scripts/CarCamera.cs" id="4_ndmqx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1bxqt"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -36,3 +37,5 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.2843
 
 [node name="Camera3D" type="Camera3D" parent="Lambo"]
 transform = Transform3D(-1, 1.0311e-08, -8.61892e-08, -1.0311e-08, 0.97178, 0.235888, 8.61892e-08, 0.235888, -0.97178, 0.0867538, 3.5226, -7.38985)
+top_level = true
+script = ExtResource("4_ndmqx")
