@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://hgdymu0nfi77"]
+
+[ext_resource type="Script" path="res://scripts/PlaneController2.cs" id="1_5un70"]
+[ext_resource type="PackedScene" uid="uid://d1xahmqucqdyr" path="res://assets/3dmodels/low_poly_x-wing.glb" id="2_m52hn"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3k4y5"]
+height = 4.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wsaod"]
+height = 4.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_w51c0"]
+size = Vector3(2, 0.1, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kyebc"]
+size = Vector3(0.7, 0.07, 0.4)
+
+[node name="Plane3" type="Node3D"]
+transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 0, 0, 0)
+script = ExtResource("1_5un70")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_3k4y5")
+
+[node name="Area3D" type="Area3D" parent="."]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+shape = SubResource("CapsuleShape3D_wsaod")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, -1.48812e-08, -4.46516e-09, 1.54752e-08, 0.979561, 0.201146, 1.38058e-09, -0.201146, 0.979561, 2.08976e-12, 2.94283, 5.211)
+
+[node name="WingLeft" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, 1.60554e-24, 0.707107, 3.48787e-16, 1, -3.48787e-16, -0.707107, 4.93259e-16, 0.707107, -1.00514, 0, 0.163692)
+visible = false
+mesh = SubResource("BoxMesh_w51c0")
+
+[node name="WingLeft2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, -4.93259e-16, -0.707107, 3.48787e-16, 1, -3.48787e-16, 0.707107, 1.60554e-24, 0.707107, 1.0143, 0, 0.163692)
+visible = false
+mesh = SubResource("BoxMesh_w51c0")
+
+[node name="WingLeft3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 3.48787e-16, 0.783292, -3.42388e-08, -0.621654, 0.621654, -2.71733e-08, 0.783292, -0.00823553, 0.623333, 1.49116)
+visible = false
+mesh = SubResource("BoxMesh_kyebc")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_m52hn")]
+transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 2.08165e-12, 2.08165e-12, 2.08165e-12)

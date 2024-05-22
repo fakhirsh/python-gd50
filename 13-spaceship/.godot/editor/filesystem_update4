@@ -1,0 +1,7 @@
+res://scenes/Plane3.tscn
+res://scenes/Scene3.tscn
+res://scenes/Bullet.tscn
+res://scripts/Bullet.cs
+res://scripts/PlaneController.cs
+res://scripts/PlaneController1.cs
+res://scripts/PlaneController2.cs
